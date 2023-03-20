@@ -5,6 +5,10 @@ if(numberOfSquares > 100 || numberOfSquares < 1){
     numberOfSquares = 32;
 }
 displayGrid(numberOfSquares);
+const squareRange = document.getElementById('squareRange');
+squareRange.addEventListener('change', (event) =>{
+    console.log(event.target.value);
+})
 
 function displayGrid(numberOfSquares){
     for(let i = 0; i < numberOfSquares; i++){
