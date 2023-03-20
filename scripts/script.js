@@ -1,4 +1,5 @@
 const grid = document.querySelector('.grid');
+let squares;
 let numberOfSquares = 32//prompt("How many squares ? (Max: 100)");
 if(numberOfSquares > 100 || numberOfSquares < 1){
     numberOfSquares = 32;
@@ -15,20 +16,22 @@ function displayGrid(numberOfSquares){
             grid.appendChild(square);
         }
     }
-
+    
 }
-
+colorSquares();
 
 let clearButton = document.querySelector('.clearGrid');
 clearButton.addEventListener('click', () => {
     for(let i = squares.length ; i > 0; i--){
         grid.removeChild(grid.lastChild); 
     }
+    numberOfSquares = prompt("How many squares ? (Max: 100);")
     displayGrid(numberOfSquares);
+    colorSquares();
 })
 
 function colorSquares(){
-    const squares = document.querySelectorAll('.square');
+    squares = document.querySelectorAll('.square');
     squares.forEach((square) => {
         square.addEventListener('mouseover', () => {
             square.style.backgroundColor = 'red';
