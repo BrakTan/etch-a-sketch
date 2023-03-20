@@ -11,6 +11,8 @@ function displayGrid(numberOfSquares){
         for(let j = 0; j < numberOfSquares; j++){
             const square = document.createElement('div');
             square.classList.add('square');
+            square.setAttribute('draggable', false);
+            square.setAttribute('painted', false);
             square.style.width = (600/numberOfSquares)+'px';
             square.style.height = (600/numberOfSquares)+'px';
             grid.appendChild(square);
@@ -31,11 +33,31 @@ clearButton.addEventListener('click', () => {
 })
 
 function colorSquares(){
+    let mouseDown = false;
+    document.body.addEventListener('mousedown', (event) => {
+        if(event.button === 0){
+            mouseDown = true;
+            console.log(mouseDown);
+        }
+    })
+    document.body.addEventListener('mouseup', (event) => {
+        if(event.button === 0){
+            mouseDown = false;
+            console.log(mouseDown);
+        }
+    })
     squares = document.querySelectorAll('.square');
     squares.forEach((square) => {
-        square.addEventListener('mouseover', () => {
-            square.style.backgroundColor = 'red';
-        }  )
+            square.addEventListener('mouseover', () => {
+            if(mouseDown && square.getAttribute('painted') === 'false'){
+                square.style.backgroundColor = `hsl(${Math.floor(Math.random()*360 +1)} 98% 50%)`;
+                square.setAttribute('painted', true);
+            }           
+        })
+        square.addEventListener('mousedown', (event) => {
+            square.style.backgroundColor = `hsl(${Math.floor(Math.random()*360 +1)} 98% 50%)`;
+            event.preventDefault();
+        })
     })
 }
 
