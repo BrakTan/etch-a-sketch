@@ -11,12 +11,29 @@
     <div class="container">
         <h1>Etch-A-Sketch</h1>
         <div class="sketch">
+            <div class="left_part part">
+                <h1>Grid</h1>
+                <div class="gridControl">
+                    <button class="clearGrid">New Grid</button>
+                    <div class="squareControl">
+                        <input type="range" name="squareRange" id="squareRange" min="2" max="100" value="32" step="2">
+                        <label for="squareRange" id="squareRangeLabel">Number of Square : <span>32</span></label>
+                    </div>
+                    
+                </div>
+                
+            </div>
             <div class="grid"></div>
-        </div>
-
-        <button class="clearGrid">New Grid</button>
-        <input type="range" name="squareRange" id="squareRange" min="2" max="100" value="32" step="2">
-        <label for="squareRange" id="squareRangeLabel">Number of Square : <span>32</span></label>
+            <div class="right_part part">
+                <h1>Colors</h1>
+                <div class="colorsChoices">
+                    <div class="whiteColor color"></div>
+                    <div class="blackColor color"></div>
+                    <div class="rainbowColor color"></div>
+                    <input type="color" name="colorSelect" id="colorSelect" class="color">
+                </div>
+            </div>
+        </div> 
     </div>
     <script src="scripts/script.js"></script>
 </body>

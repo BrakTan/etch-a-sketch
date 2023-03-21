@@ -1,3 +1,7 @@
+html{
+    background: linear-gradient(-45deg, #fcfc03, #0303fc);
+}
+
 h1{
     text-align: center;
     font-size: 3rem;
@@ -36,4 +40,65 @@ h1{
 
 .square:hover{
     background: cyan;
+}
+
+.part{
+    border: blue 1px dotted;
+    height: 600px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin: 0px 20px;
+    align-items: center;
+
+}
+
+.gridControl{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.squareControl{
+    display: flex;
+    flex-direction: column;
+}
+
+.clearGrid{
+    background-color: hsl(44, 0%, 41%);
+    color: hsl(0, 0%, 85%);
+    border: none;
+    border-radius: 10px;
+}
+
+#squareRange{
+    cursor: grab;
+}
+
+.colorsChoices{
+    display: flex;
+    flex-direction: row;
+    gap: 20px; 
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.color{
+    height: 80px;
+    width: 80px;
+    border: black 1px solid;
+    border-radius: 10px;
+}
+
+.whiteColor{
+    background-color: white;
+}
+
+.blackColor{
+    background-color: black;
+}
+
+.rainbowColor{
+    background: linear-gradient(to left top, #fc0303, #fcfc03, #03fc03, #03fcfc, #0303fc, #fc03fc);
 }
