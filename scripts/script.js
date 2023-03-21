@@ -5,10 +5,22 @@ if(numberOfSquares > 100 || numberOfSquares < 1){
     numberOfSquares = 32;
 }
 displayGrid(numberOfSquares);
+
 const squareRange = document.getElementById('squareRange');
-squareRange.addEventListener('change', (event) =>{
+const squareRangeIndicator = document.querySelector('#squareRangeLabel span');
+squareRange.addEventListener('input', (event) =>{
     console.log(event.target.value);
+    numberOfSquares = event.target.value;
+    squareRangeIndicator.textContent = numberOfSquares;
+    //this.addEventListener('change', clearGrid()) #This line reset a new grid at every changement, but cause performance issues
 })
+
+
+colorSquares();
+
+let clearButton = document.querySelector('.clearGrid');
+clearButton.addEventListener('click', clearGrid);
+
 
 function displayGrid(numberOfSquares){
     for(let i = 0; i < numberOfSquares; i++){
@@ -24,17 +36,6 @@ function displayGrid(numberOfSquares){
     }
     
 }
-colorSquares();
-
-let clearButton = document.querySelector('.clearGrid');
-clearButton.addEventListener('click', () => {
-    for(let i = squares.length ; i > 0; i--){
-        grid.removeChild(grid.lastChild); 
-    }
-    numberOfSquares = prompt("How many squares ? (Max: 100);")
-    displayGrid(numberOfSquares);
-    colorSquares();
-})
 
 function colorSquares(){
     let mouseDown = false;
@@ -65,3 +66,10 @@ function colorSquares(){
     })
 }
 
+function clearGrid() {
+    for(let i = squares.length ; i > 0; i--){
+        grid.removeChild(grid.lastChild); 
+    }
+    displayGrid(numberOfSquares);
+    colorSquares();
+}
