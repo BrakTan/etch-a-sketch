@@ -1,6 +1,10 @@
 const grid = document.querySelector('.grid');
+const showGrid = document.querySelector('.showGrid');
+const showColor = document.querySelector('.showColor')
+let actualColor = 'yellow';
 let squares;
-let numberOfSquares = 32//prompt("How many squares ? (Max: 100)");
+let rangeNumber;
+let numberOfSquares = 32;
 if(numberOfSquares > 100 || numberOfSquares < 1){
     numberOfSquares = 32;
 }
@@ -10,8 +14,8 @@ const squareRange = document.getElementById('squareRange');
 const squareRangeIndicator = document.querySelector('#squareRangeLabel span');
 squareRange.addEventListener('input', (event) =>{
     console.log(event.target.value);
-    numberOfSquares = event.target.value;
-    squareRangeIndicator.textContent = numberOfSquares;
+    rangeNumber = event.target.value;
+    squareRangeIndicator.textContent = rangeNumber;
     //this.addEventListener('change', clearGrid()) #This line reset a new grid at every changement, but cause performance issues
 })
 
@@ -19,7 +23,37 @@ squareRange.addEventListener('input', (event) =>{
 colorSquares();
 
 let clearButton = document.querySelector('.clearGrid');
-clearButton.addEventListener('click', clearGrid);
+clearButton.addEventListener('click', () => {
+    numberOfSquares = rangeNumber;
+    clearGrid();
+});
+
+const gridChoice = document.querySelectorAll('.premakeGrids button');
+gridChoice.forEach((grid) =>{
+    grid.addEventListener('click', () =>{
+        numberOfSquares = grid.getAttribute('value');
+        clearGrid();
+    })
+})
+
+
+const colorChoice = document.querySelectorAll('.color');
+colorChoice.forEach((color) =>{
+    color.addEventListener('click', () =>{
+        actualColor = color.getAttribute('value');
+        showColor.textContent = actualColor;
+        showColor.style.background = actualColor;
+        if(actualColor === 'Rainbow'){
+            showColor.style.background = 'linear-gradient(to left top, #fc0303, #fcfc03, #03fc03, #03fcfc, #0303fc, #fc03fc)';
+        }
+    })
+    color.addEventListener('change', (event) =>{
+        actualColor = event.target.value;
+        showColor.textContent = actualColor;
+        showColor.style.background = actualColor;
+    })
+    
+})
 
 
 function displayGrid(numberOfSquares){
@@ -35,6 +69,10 @@ function displayGrid(numberOfSquares){
         }
     }
     
+}
+
+function rainbowColor(){
+    return `hsl(${Math.floor(Math.random()*360 +1)} 98% 50%)`
 }
 
 function colorSquares(){
@@ -54,13 +92,23 @@ function colorSquares(){
     squares = document.querySelectorAll('.square');
     squares.forEach((square) => {
             square.addEventListener('mouseover', () => {
-            if(mouseDown && square.getAttribute('painted') === 'false'){
-                square.style.backgroundColor = `hsl(${Math.floor(Math.random()*360 +1)} 98% 50%)`;
+            if(mouseDown){
+                if(actualColor === 'Rainbow'){
+                    square.style.backgroundColor = rainbowColor();
+                }
+                else{
+                    square.style.backgroundColor = actualColor;
+                }
                 square.setAttribute('painted', true);
             }           
         })
         square.addEventListener('mousedown', (event) => {
-            square.style.backgroundColor = `hsl(${Math.floor(Math.random()*360 +1)} 98% 50%)`;
+            if(actualColor === 'Rainbow'){
+                square.style.backgroundColor = rainbowColor();
+            }
+            else{
+                square.style.backgroundColor = actualColor;
+            }
             event.preventDefault();
         })
     })
@@ -72,4 +120,5 @@ function clearGrid() {
     }
     displayGrid(numberOfSquares);
     colorSquares();
+    showGrid.textContent = `${numberOfSquares}x${numberOfSquares}`;
 }

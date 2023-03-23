@@ -121,3 +121,24 @@ h1{
     padding: 10px 20px;
     border-radius: 15px;
 }
+
+.actual{
+    border: #0303fc 1px double;
+    border-radius: 20px;
+    height: 100px;
+    width: 80%;
+    margin-top: auto;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.showGrid{
+    background-color: #1078ff;
+}
+
+.showColor{
+    background-color: yellow;
+}
