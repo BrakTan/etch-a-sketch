@@ -102,3 +102,22 @@ h1{
 .rainbowColor{
     background: linear-gradient(to left top, #fc0303, #fcfc03, #03fc03, #03fcfc, #0303fc, #fc03fc);
 }
+
+#colorSelect{
+    background: linear-gradient(45deg,blue, green, red);
+}
+
+.premakeGrids{
+    margin-top: 30px;
+    display:flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.premakeGrids button{
+    background-color: #1078ff;
+    font-size: 1rem;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
