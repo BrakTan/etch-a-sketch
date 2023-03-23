@@ -3,8 +3,8 @@ const showGrid = document.querySelector('.showGrid');
 const showColor = document.querySelector('.showColor')
 let actualColor = 'yellow';
 let squares;
-let rangeNumber;
-let numberOfSquares = 32;
+let rangeNumber = 32;
+let numberOfSquares = rangeNumber;
 if(numberOfSquares > 100 || numberOfSquares < 1){
     numberOfSquares = 32;
 }
