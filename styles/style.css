@@ -1,10 +1,12 @@
 html{
-    background: linear-gradient(-45deg, #fcfc03, #0303fc);
+    background: linear-gradient(-45deg, lightcoral, #0303fc);
 }
 
 h1{
     text-align: center;
     font-size: 3rem;
+    color: white;
+    text-shadow: black 3px 3px, lightcoral 5px 5px;
 }
 
 .container, html{
@@ -43,7 +45,6 @@ h1{
 }
 
 .part{
-    border: blue 1px dotted;
     height: 600px;
     width: 250px;
     display: flex;
@@ -65,12 +66,6 @@ h1{
     flex-direction: column;
 }
 
-.clearGrid{
-    background-color: hsl(44, 0%, 41%);
-    color: hsl(0, 0%, 85%);
-    border: none;
-    border-radius: 10px;
-}
 
 #squareRange{
     cursor: grab;
@@ -114,16 +109,20 @@ h1{
     gap: 30px;
 }
 
-.premakeGrids button{
+button{
     background-color: #1078ff;
     font-size: 1rem;
-    border: none;
+    border: outset 3px grey;
     padding: 10px 20px;
     border-radius: 15px;
 }
 
+button:active{
+    border: inset 3px grey;
+}
+
 .actual{
-    border: #0303fc 1px double;
+    border: black 2px double;
     border-radius: 20px;
     height: 100px;
     width: 80%;
